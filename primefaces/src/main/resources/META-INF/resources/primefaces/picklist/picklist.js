@@ -140,7 +140,7 @@ PrimeFaces.widget.PickList = PrimeFaces.widget.BaseWidget.extend({
                 connectWith: this.jqId + ' .ui-picklist-list',
                 revert: 1,
                 helper: 'clone',
-                placeholder: "ui-picklist-item ui-state-highlight",
+                placeholder: "ui-picklist-item ui-state-highlight sortable-placeholder",
                 forcePlaceholderSize: true,
                 update: function(event, ui) {
                     $this.unselectItem(ui.item);
@@ -415,7 +415,7 @@ PrimeFaces.widget.PickList = PrimeFaces.widget.BaseWidget.extend({
                 default:
                     // #3304 find first item matching the character typed
                     var keyChar = key.toLowerCase();
-                    list.children('.ui-picklist-item').each(function() {
+                    list.children('.ui-picklist-item:not(.sortable-placeholder)').each(function() {
                         var item = $(this),
                             itemLabel = item.attr('data-item-label');
                         if (itemLabel.toLowerCase().indexOf(keyChar) === 0) {
